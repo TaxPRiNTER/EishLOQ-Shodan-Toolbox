@@ -12,6 +12,7 @@ EishLOQ is a Bash script designed to streamline interactions with Shodan, a powe
 - **Organization Information:** Obtain details about organizations based on name.
 - **Ping Website and Search by IP:** Get the IP from a website via ping and perform a Shodan host search.
 - **Scan Raw IP:** Directly scan raw IP addresses without validation.
+- **Download and Parse Shodan Results:** Download Shodan results based on a query and parse the downloaded file to extract IP addresses.
 - **Clear:** Clear the terminal screen for a clean interface.
 - **Colorful Interface:** Enjoy colorful prompts and ASCII art for an engaging experience.
 
@@ -37,6 +38,12 @@ EishLOQ is a Bash script designed to streamline interactions with Shodan, a powe
     ```
 
 ## Updates
+
+### Version 1.0.3
+
+- **New Feature:** Added `Download and Parse Shodan Results` option to download Shodan results based on a query and parse the downloaded file to extract IP addresses.
+- **Enhancement:** Maintained ASCII art after clearing the screen.
+- **Note:** Remove any extra characters after '/' at the domain.
 
 ### Version 1.0.2
 
