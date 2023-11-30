@@ -36,12 +36,9 @@ EishLOQ is a Bash script designed to streamline interactions with Shodan, a powe
 
 ### Version 1.0.2
 
-- **Enhancement:** Improved input handling in the `pingAndSearch` function. Now strips "http://", "https://", and trailing "/" for a smoother experience.
-
-### Version 1.0.1
-
 - **New Feature:** Added `pingAndSearch` function to get the IP from a website via ping and perform a Shodan host search.
 - **Enhancement:** Improved the overall user experience.
+- **Note:** When using option 5, remove any extra characters after '/' at the domain for accurate results.
 
 ## License
 
