@@ -6,6 +6,19 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Function to get IP from a website using ping
+function pingAndSearch() {
+    read -p "Enter website to ping: " website_to_ping
+    ip_address=$(ping -c 1 "$website_to_ping" | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1)
+    
+    if [ -n "$ip_address" ]; then
+        echo -e "${GREEN}IP Address for $website_to_ping: $ip_address${NC}"
+        python3 -m shodan host "$ip_address"
+    else
+        echo -e "${RED}Unable to retrieve IP address.${NC}"
+    fi
+}
+
 # ASCII art for the header with tool name
 echo -e "${GREEN}
   ______ _     _     _             
@@ -22,8 +35,10 @@ while true; do
     echo -e "1. ${YELLOW}Submit IP for Scan${NC}"
     echo -e "2. ${YELLOW}Search${NC}"
     echo -e "3. ${YELLOW}Check Host by IP${NC}"
-    echo -e "4. ${RED}Exit${NC}"
-    read -p "Enter your choice (1-4): " choice
+    echo -e "4. ${YELLOW}Organization Information${NC}"
+    echo -e "5. ${YELLOW}Ping Website and Search by IP${NC}"
+    echo -e "6. ${RED}Exit${NC}"
+    read -p "Enter your choice (1-6): " choice
 
     case $choice in
         1)
@@ -40,11 +55,18 @@ while true; do
             python3 -m shodan host "$ip_to_check"
             ;;
         4)
+            read -p "Enter Organization name: " org_name
+            python3 -m shodan search org:"$org_name"
+            ;;
+        5)
+            pingAndSearch
+            ;;
+        6)
             echo -e "${RED}Exiting EishLOQ. Goodbye!${NC}"
             exit 0
             ;;
         *)
-            echo -e "${RED}Invalid choice. Please enter a number between 1 and 4.${NC}"
+            echo -e "${RED}Invalid choice. Please enter a number between 1 and 6.${NC}"
             ;;
     esac
 
