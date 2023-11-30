@@ -4,13 +4,15 @@
 
 EishLOQ is a Bash script designed to streamline interactions with Shodan, a powerful search engine for internet-connected devices. It offers a user-friendly interface for submitting IPs for scanning, performing targeted searches, and checking detailed host information.
 
-⚠️ **Disclaimer: This script is for educational purposes only. Use responsibly, and the author is not responsible for any misuse or unintended consequences.**
-
 ## Features
 
 - **Submit IP for Scan:** Easily submit IPs for scanning with a simple user prompt.
 - **Search:** Conduct targeted searches using Shodan's capabilities.
 - **Check Host by IP:** Retrieve detailed information about a specific host.
+- **Organization Information:** Obtain details about organizations based on name.
+- **Ping Website and Search by IP:** Get the IP from a website via ping and perform a Shodan host search.
+- **Scan Raw IP:** Directly scan raw IP addresses without validation.
+- **Clear:** Clear the terminal screen for a clean interface.
 - **Colorful Interface:** Enjoy colorful prompts and ASCII art for an engaging experience.
 
 ## Usage
@@ -38,29 +40,17 @@ EishLOQ is a Bash script designed to streamline interactions with Shodan, a powe
 
 ### Version 1.0.2
 
-- **New Feature:** Added `pingAndSearch` function to get the IP from a website via ping and perform a Shodan host search.
-- **Enhancement:** Improved the overall user experience.
-- **Note:** When using option 5, remove any extra characters after '/' at the domain for accurate results.
+- **New Feature:** Added `Scan Raw IP` option to directly scan raw IP addresses.
+- **New Feature:** Added `Clear` option to clear the terminal screen.
+- **Enhancement:** Maintained ASCII art after clearing the screen.
+- **Note:** Remove any extra characters after '/' at the domain.
 
 ### Version 1.0.1
 
-- **New Feature:** Added more color and ASCII art for an enhanced visual experience.
-- **Enhancement:** Improved the overall user interface.
+- **New Feature:** Added `pingAndSearch` function to get the IP from a website via ping and perform a Shodan host search.
+- **Enhancement:** Improved the overall user experience.
+- **Note:** Remove any extra characters after '/' at the domain.
 
-## License
+## Disclaimer
 
-This project is licensed under the [MIT License](LICENSE.md) - see the [LICENSE.md](LICENSE.md) file for details.
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests.
-
-## Acknowledgements
-
-Special thanks to the [Shodan](https://www.shodan.io/) team for their powerful search engine.
-
-## Author
-
-TaxPRiNTER
-
-[GitHub](https://github.com/TaxPRiNTER)
+⚠️ This tool is for educational purposes only. The author is not responsible for any misuse or damage caused. Use responsibly and respect applicable laws and regulations.
