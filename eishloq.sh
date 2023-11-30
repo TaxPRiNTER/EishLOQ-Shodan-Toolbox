@@ -6,17 +6,32 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Function to strip http, https, trailing /, and extra fragments
+function cleanInput() {
+    cleaned_input=$(echo "$1" | sed -e 's/^http:\/\///' -e 's/^https:\/\///' -e 's/\/$//' -e 's/#.*$//')
+    echo "$cleaned_input"
+}
+
 # Function to get IP from a website using ping
 function pingAndSearch() {
-    read -p "Enter website to ping: " website_to_ping
-    ip_address=$(ping -c 1 "$website_to_ping" | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1)
-    
-    if [ -n "$ip_address" ]; then
-        echo -e "${GREEN}IP Address for $website_to_ping: $ip_address${NC}"
-        python3 -m shodan host "$ip_address"
+    read -p "Enter IP or website to scan: " ip_or_website
+    cleaned_input=$(cleanInput "$ip_or_website")
+
+    # Check if the input is an IP address
+    if [[ "$cleaned_input" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        ip_address="$cleaned_input"
     else
-        echo -e "${RED}Unable to retrieve IP address.${NC}"
+        # Get IP address from the website
+        ip_address=$(ping -c 1 "$(echo "$cleaned_input" | cut -d ':' -f 1)" | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1)
+        
+        if [ -z "$ip_address" ]; then
+            echo -e "${RED}Unable to retrieve IP address for $cleaned_input.${NC}"
+            return
+        fi
     fi
+
+    echo -e "${GREEN}IP Address: $ip_address${NC}"
+    python3 -m shodan host "$ip_address"
 }
 
 # ASCII art for the header with tool name
@@ -38,6 +53,7 @@ while true; do
     echo -e "4. ${YELLOW}Organization Information${NC}"
     echo -e "5. ${YELLOW}Ping Website and Search by IP${NC}"
     echo -e "6. ${RED}Exit${NC}"
+    echo -e "${YELLOW}Note: Remove any extra characters after '/' at the domain.${NC}"
     read -p "Enter your choice (1-6): " choice
 
     case $choice in
