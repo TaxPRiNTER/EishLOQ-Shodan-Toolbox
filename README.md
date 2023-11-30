@@ -2,7 +2,6 @@
 
 ![image](https://github.com/TaxPRiNTER/EishLOQ-Shodan-Toolbox/assets/146424699/9fd413b8-2241-4c54-ac80-6a418b862cb2)
 
-
 EishLOQ is a Bash script designed to streamline interactions with Shodan, a powerful search engine for internet-connected devices. It offers a user-friendly interface for submitting IPs for scanning, performing targeted searches, and checking detailed host information.
 
 ## Features
@@ -32,6 +31,13 @@ EishLOQ is a Bash script designed to streamline interactions with Shodan, a powe
     ```bash
     ./eishloq.sh
     ```
+
+## Updates
+
+### Version 1.0.1
+
+- **New Feature:** Added `pingAndSearch` function to get the IP from a website via ping and perform a Shodan host search.
+- **Enhancement:** Improved the overall user experience.
 
 ## License
 
