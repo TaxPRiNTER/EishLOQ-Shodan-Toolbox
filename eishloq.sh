@@ -35,7 +35,7 @@ function pingAndSearch() {
 }
 
 # ASCII art for the header with tool name
-echo -e "${GREEN}
+ascii_art="${GREEN}
   ______ _     _     _             
  |  ____(_)   | |   | |            
  | |__   _ ___| |__ | | ___   __ _ 
@@ -46,15 +46,18 @@ echo -e "${GREEN}
                                |_|"
 
 while true; do
+    echo -e "$ascii_art"
     echo -e "\n********** EishLOQ Shodan Tool **********"
     echo -e "1. ${YELLOW}Submit IP for Scan${NC}"
     echo -e "2. ${YELLOW}Search${NC}"
     echo -e "3. ${YELLOW}Check Host by IP${NC}"
     echo -e "4. ${YELLOW}Organization Information${NC}"
     echo -e "5. ${YELLOW}Ping Website and Search by IP${NC}"
-    echo -e "6. ${RED}Exit${NC}"
+    echo -e "6. ${YELLOW}Scan Raw IP${NC}"
+    echo -e "7. ${YELLOW}Clear${NC}"
+    echo -e "8. ${RED}Exit${NC}"
     echo -e "${YELLOW}Note: Remove any extra characters after '/' at the domain.${NC}"
-    read -p "Enter your choice (1-6): " choice
+    read -p "Enter your choice (1-8): " choice
 
     case $choice in
         1)
@@ -78,11 +81,21 @@ while true; do
             pingAndSearch
             ;;
         6)
+            read -p "Enter Raw IP to scan: " raw_ip
+            python3 -m shodan host "$raw_ip"
+            ;;
+        7)
+            clear
+            echo -e "$ascii_art"
+            echo -e "\n********** EishLOQ Shodan Tool **********"
+            echo -e "${YELLOW}Note: Remove any extra characters after '/' at the domain.${NC}"
+            ;;
+        8)
             echo -e "${RED}Exiting EishLOQ. Goodbye!${NC}"
             exit 0
             ;;
         *)
-            echo -e "${RED}Invalid choice. Please enter a number between 1 and 6.${NC}"
+            echo -e "${RED}Invalid choice. Please enter a number between 1 and 8.${NC}"
             ;;
     esac
 
