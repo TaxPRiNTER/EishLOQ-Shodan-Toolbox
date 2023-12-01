@@ -4,6 +4,19 @@
 
 EishLOQ is a Bash script designed to streamline interactions with Shodan, a powerful search engine for internet-connected devices. It offers a user-friendly interface for submitting IPs for scanning, performing targeted searches, and checking detailed host information.
 
+## ❌ Errors
+- **socktype: SOCK_RAW ping: socket: Operation not permitted ping: => missing cap_net_raw+p capability or setuid?**
+  #### Fix: sudo setcap cap_net_raw+ep /bin/ping
+
+
+- **Unable to retrieve IP address for**
+  #### Fix: Remove anything after / on a url. For example: https://github.com/TaxPRiNTER/ (REMOVE TaxPRiNTER)
+
+  
+
+
+
+
 ## Features
 
 - **Submit IP for Scan:** Easily submit IPs for scanning with a simple user prompt.
