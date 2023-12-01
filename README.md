@@ -6,11 +6,12 @@ EishLOQ is a Bash script designed to streamline interactions with Shodan, a powe
 
 ## ❌ Errors
 - **socktype: SOCK_RAW ping: socket: Operation not permitted ping: => missing cap_net_raw+p capability or setuid?**
-  #### Fix: sudo setcap cap_net_raw+ep /bin/ping
+  #### Fix: ```sudo setcap cap_net_raw+ep /bin/ping```
 
+--------
 
 - **Unable to retrieve IP address for**
-  #### Fix: Remove anything after / on a url. For example: https://github.com/TaxPRiNTER/ (REMOVE TaxPRiNTER)
+  #### Fix: ```Remove anything after / on a url. For example: https://github.com/TaxPRiNTER/ (REMOVE TaxPRiNTER)```
 
   
 
